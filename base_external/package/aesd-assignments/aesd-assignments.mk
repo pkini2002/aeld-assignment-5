@@ -7,7 +7,7 @@
 AESD_ASSIGNMENTS_VERSION = e90ff2311f9e285867ff4ba32811b5ad0135f13d
 
 AESD_ASSIGNMENTS_SITE = \
-        git@github.com:pkini2002/aeld-assignment-3-and-later.git
+        https://github.com/pkini2002/aeld-assignment-5.git
 
 AESD_ASSIGNMENTS_SITE_METHOD = git
 

@@ -1,39 +1,30 @@
-
 ##############################################################
 #
 # AESD-ASSIGNMENTS
 #
 ##############################################################
-AESD_ASSIGNMENTS_VERSION = a9e8ad393699ea1f521ee973cf471e9d6a036844
+
+AESD_ASSIGNMENTS_VERSION = e90ff2311f9e285867ff4ba32811b5ad0135f13d
 
 AESD_ASSIGNMENTS_SITE = \
-https://github.com/pkini2002/aeld-assignment-3-and-later.git
+        git@github.com:pkini2002/aeld-assignment-3-and-later.git
 
 AESD_ASSIGNMENTS_SITE_METHOD = git
 
 define AESD_ASSIGNMENTS_BUILD_CMDS
-    $(MAKE) CC="$(TARGET_CC)" \
-        -C $(@D)/finder-app all
+        $(MAKE) CC="$(TARGET_CC)" -C $(@D)/server all
 endef
 
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 
-    $(INSTALL) -D -m 0755 \
-    $(@D)/finder-app/writer \
-    $(TARGET_DIR)/usr/bin/writer
+        $(INSTALL) -D -m 0755 \
+                $(@D)/server/aesdsocket \
+                $(TARGET_DIR)/usr/bin/aesdsocket
 
-    $(INSTALL) -D -m 0755 \
-    $(@D)/finder-app/finder.sh \
-    $(TARGET_DIR)/usr/bin/finder.sh
+        $(INSTALL) -D -m 0755 \
+                $(@D)/server/aesdsocket-start-stop \
+                $(TARGET_DIR)/etc/init.d/S99aesdsocket
 
-    $(INSTALL) -D -m 0755 \
-    $(@D)/finder-app/finder-test.sh \
-    $(TARGET_DIR)/usr/bin/finder-test.sh
-
-    mkdir -p $(TARGET_DIR)/etc/finder-app/conf
-
-    cp -r $(@D)/finder-app/conf/* \
-        $(TARGET_DIR)/etc/finder-app/conf/
 endef
 
 $(eval $(generic-package))
